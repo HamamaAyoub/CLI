@@ -84,6 +84,17 @@
       <artifactId>junit-jupiter-engine</artifactId>
       <scope>test</scope>
     </dependency>
+      <dependency>
+          <groupId>com.proxym.cli</groupId>
+          <artifactId>cli</artifactId>
+          <version>0.1</version>
+          <scope>test</scope>
+      </dependency>
+      <dependency>
+          <groupId>info.picocli</groupId>
+          <artifactId>picocli</artifactId>
+          <version>4.7.1</version>
+      </dependency>
   </dependencies>
 
   <build>
@@ -92,7 +103,7 @@
         <groupId>io.micronaut.build</groupId>
         <artifactId>micronaut-maven-plugin</artifactId>
       </plugin>
-      
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>

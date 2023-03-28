@@ -8,21 +8,19 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
-@Command(name = "cli", description = "...",
-        mixinStandardHelpOptions = true)
-public class CliCommand implements Runnable {
 
-    @Option(names = {"-v", "--verbose"}, description = "...")
-    boolean verbose;
+@Command(name = "hello", description = "i'm greeting you from the cli",
+    mixinStandardHelpOptions = true, version = "1.0")
+public class HelloCommand implements Runnable {
+    @Option(names = {"-n", "--name"}, defaultValue = "world")
+    private String name;
 
     public static void main(String[] args) throws Exception {
-        PicocliRunner.run(CliCommand.class, args);
+        PicocliRunner.run(HelloCommand.class, args);
     }
 
     public void run() {
         // business logic here
-        if (verbose) {
-            System.out.println("Hi!");
-        }
+        System.out.println("hello " + name);
     }
 }
