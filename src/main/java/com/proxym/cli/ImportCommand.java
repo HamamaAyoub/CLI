@@ -2,6 +2,7 @@ package com.proxym.cli;
 
 import io.micronaut.configuration.picocli.PicocliRunner;
 import org.apache.commons.io.IOUtils;
+import picocli.CommandLine;
 import picocli.CommandLine.Command;
 
 import java.io.FileOutputStream;
@@ -18,8 +19,12 @@ import java.util.List;
     mixinStandardHelpOptions = true, version = "1.0")
 public class ImportCommand implements Runnable {
 
-    //@Option(names = {"-d", "--datatype"}, defaultValue = "none")
-    //private String datatype;
+    @CommandLine.Option(names = {"-a", "--api-endpoint"}, defaultValue = "http://localhost:8080")
+    private String apiEndpoint;
+
+    @CommandLine.Parameters
+    private String dataType;
+
 
     public static void main(String[] args) throws Exception {
         PicocliRunner.run(ImportCommand.class, args);
@@ -27,8 +32,9 @@ public class ImportCommand implements Runnable {
 
     public void run() {
         HttpClient client = HttpClient.newHttpClient();
+        System.out.println(apiEndpoint + "/api/" + dataType );
         HttpRequest request = HttpRequest.newBuilder()
-            .uri(URI.create("http://localhost:8080/api/employees"))
+            .uri(URI.create( apiEndpoint + "/api/" + dataType ))
             .build();
 
         client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
