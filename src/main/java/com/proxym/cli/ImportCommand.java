@@ -9,18 +9,18 @@ import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
 
-@Command(name = "hello", description = "i'm greeting you from the cli",
+@Command(name = "export", description = "exporting file from plateforme",
     mixinStandardHelpOptions = true, version = "1.0")
-public class HelloCommand implements Runnable {
-    @Option(names = {"-n", "--name"}, defaultValue = "world")
-    private String name;
+public class ImportCommand implements Runnable {
+    @Option(names = {"-d", "--datatype"}, defaultValue = "none")
+    private String datatype;
 
     public static void main(String[] args) throws Exception {
-        PicocliRunner.run(HelloCommand.class, args);
+        PicocliRunner.run(ImportCommand.class, args);
     }
 
     public void run() {
         // business logic here
-        System.out.println("hello " + name);
+        System.out.println("your data type is :  " + datatype);
     }
 }
