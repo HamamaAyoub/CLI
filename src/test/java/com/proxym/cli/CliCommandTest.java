@@ -19,7 +19,7 @@ public class CliCommandTest {
 
         try (ApplicationContext ctx = ApplicationContext.run(Environment.CLI, Environment.TEST)) {
             String[] args = new String[] { "-v" };
-            PicocliRunner.run(HelloCommand.class, ctx, args);
+            PicocliRunner.run(ImportCommand.class, ctx, args);
 
             // cli
             assertTrue(baos.toString().contains("Hi!"));
