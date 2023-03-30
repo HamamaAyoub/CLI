@@ -1,6 +1,6 @@
 package com.proxym.cli;
 
-import com.proxym.cli.commands.ExportCommand;
+import com.proxym.cli.parentCommand.Cli;
 import io.micronaut.configuration.picocli.PicocliRunner;
 import io.micronaut.context.ApplicationContext;
 import io.micronaut.context.env.Environment;
@@ -20,7 +20,7 @@ public class CliCommandTest {
 
         try (ApplicationContext ctx = ApplicationContext.run(Environment.CLI, Environment.TEST)) {
             String[] args = new String[] { "-v" };
-            PicocliRunner.run(ExportCommand.class, ctx, args);
+            PicocliRunner.run(Cli.class, ctx, args);
 
             // cli
             assertTrue(baos.toString().contains("Hi!"));
