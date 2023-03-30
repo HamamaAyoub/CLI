@@ -1,9 +1,7 @@
-package com.proxym.cli;
+package com.proxym.cli.commands;
 
-import io.micronaut.configuration.picocli.PicocliRunner;
 import org.apache.commons.io.IOUtils;
 import picocli.CommandLine;
-import picocli.CommandLine.Command;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -12,12 +10,10 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.LocalDateTime;
-import java.util.List;
 
-
-@Command(name = "export", description = "exporting file from plateforme",
+@CommandLine.Command(name = "export", description = "exporting file from plateforme",
     mixinStandardHelpOptions = true, version = "1.0")
-public class ImportCommand implements Runnable {
+public class ExportCommand implements Runnable {
 
     @CommandLine.Option(names = {"-a", "--api-endpoint"}, defaultValue = "http://localhost:8080")
     private String apiEndpoint;
@@ -26,13 +22,9 @@ public class ImportCommand implements Runnable {
     private String dataType;
 
 
-    public static void main(String[] args) throws Exception {
-        PicocliRunner.run(ImportCommand.class, args);
-    }
 
     public void run() {
         HttpClient client = HttpClient.newHttpClient();
-        System.out.println(apiEndpoint + "/api/" + dataType );
         HttpRequest request = HttpRequest.newBuilder()
             .uri(URI.create( apiEndpoint + "/api/" + dataType ))
             .build();
@@ -48,6 +40,7 @@ public class ImportCommand implements Runnable {
                     e.printStackTrace();
                 }
             }).join();
+        System.out.println("file exported successfully");
 
     }
 }
