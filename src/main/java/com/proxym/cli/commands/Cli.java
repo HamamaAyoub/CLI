@@ -1,4 +1,4 @@
-package com.proxym.cli.parentCommand;
+package com.proxym.cli.commands;
 
 
 import com.proxym.cli.commands.ExportCommand;

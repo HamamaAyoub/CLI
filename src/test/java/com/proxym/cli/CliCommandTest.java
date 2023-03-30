@@ -1,6 +1,6 @@
 package com.proxym.cli;
 
-import com.proxym.cli.parentCommand.Cli;
+import com.proxym.cli.commands.Cli;
 import io.micronaut.configuration.picocli.PicocliRunner;
 import io.micronaut.context.ApplicationContext;
 import io.micronaut.context.env.Environment;

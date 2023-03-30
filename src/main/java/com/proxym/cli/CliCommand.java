@@ -1,6 +1,6 @@
 package com.proxym.cli;
 
-import com.proxym.cli.parentCommand.Cli;
+import com.proxym.cli.commands.Cli;
 import picocli.CommandLine;
 
 public class CliCommand {
