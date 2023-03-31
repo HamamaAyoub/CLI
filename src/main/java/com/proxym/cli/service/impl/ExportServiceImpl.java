@@ -2,6 +2,8 @@ package com.proxym.cli.service.impl;
 
 import com.proxym.cli.service.ExportService;
 import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -14,6 +16,9 @@ import java.time.LocalDateTime;
 import java.util.concurrent.CompletionException;
 
 public class ExportServiceImpl   implements ExportService {
+
+    Logger log = LoggerFactory.getLogger(ExportServiceImpl.class);
+
     @Override
     public void export(String apiEndpoint, String dataType) {
         try {
@@ -25,8 +30,8 @@ public class ExportServiceImpl   implements ExportService {
             client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
                 .thenAccept(httpResponse -> {
                     if(httpResponse.statusCode() != 200){
-                        System.out.println("Api returned error code: " + httpResponse.statusCode());
-                        System.out.println("Api response body: " + httpResponse.body());
+                        log.error("Api returned error code: {} , Api response body:{} " , httpResponse.statusCode()
+                            , httpResponse.body());
                         System.exit(-1);
                     }
                     String responseType = httpResponse.headers().map().get("content-type").get(0);
@@ -35,17 +40,17 @@ public class ExportServiceImpl   implements ExportService {
                     try {
                         IOUtils.write(httpResponse.body().getBytes(),new FileOutputStream(filename));
                     } catch (IOException e){
-                        e.printStackTrace();
+                        log.error("Failed to export response to disk", e);
                     }
                 }).join();
-
-            System.out.println("file exported successfully");
+            log.info("file exported successfully");
         }catch (CompletionException e){
             if(e.getCause() instanceof ConnectException){
-                System.out.println("could not connect to api server: " + apiEndpoint);
+                log.error("could not connect to api server: {}" , apiEndpoint,e);
                 System.exit(-1);
             }
-            throw e;
+            log.error("unexpected error during api call",e);
+            System.exit(-1);
         }
     }
 }
