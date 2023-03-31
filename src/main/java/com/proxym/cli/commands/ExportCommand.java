@@ -2,16 +2,8 @@ package com.proxym.cli.commands;
 
 import com.proxym.cli.service.ExportService;
 import com.proxym.cli.service.impl.ExportServiceImpl;
-import org.apache.commons.io.IOUtils;
 import picocli.CommandLine;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.time.LocalDateTime;
 
 
 
@@ -28,7 +20,7 @@ public class ExportCommand implements Runnable {
     @CommandLine.Parameters
     private String dataType;
 
-    private ExportService exportService = new ExportServiceImpl(); // todo: inject using framework ?
+    private ExportService exportService = new ExportServiceImpl(); // todo: inject using framework
 
     public void run() {
         exportService.export(apiEndpoint, dataType);
