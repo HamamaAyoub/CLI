@@ -1,6 +1,8 @@
 package com.proxym.cli.commands;
 
 
+import com.proxym.cli.service.ImportService;
+import com.proxym.cli.service.impl.ImportServiceImpl;
 import picocli.CommandLine;
 
 @CommandLine.Command(name = "import", description = "importing file from plateforme",
@@ -15,6 +17,8 @@ public class ImportCommand implements Runnable {
     @CommandLine.Parameters
     private String dataType;
 
+
+    private ImportService importService = new ImportServiceImpl();
     @Override
     public void run() {
 

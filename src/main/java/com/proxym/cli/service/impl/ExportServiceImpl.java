@@ -34,7 +34,7 @@ public class ExportServiceImpl   implements ExportService {
                             , httpResponse.body());
                         System.exit(-1);
                     }
-                    String responseType = httpResponse.headers().map().get("content-type").get(0);
+                    String responseType = httpResponse.headers().map().get("content-type").get(0); //returns : application.xml
                     String extension = responseType.replace("application/",".");
                     String filename = "export-" + LocalDateTime.now().toString().replace(":","_") + extension;
                     try {
@@ -43,7 +43,8 @@ public class ExportServiceImpl   implements ExportService {
                         log.error("Failed to export response to disk", e);
                     }
                 }).join();
-            log.info("file exported successfully");
+            log.debug("Service : "+dataType + " is exported successfully to : "+apiEndpoint );
+            //System.out.println(dataType + " exported successfully to : "+apiEndpoint );
         }catch (CompletionException e){
             if(e.getCause() instanceof ConnectException){
                 log.error("could not connect to api server: {}" , apiEndpoint,e);

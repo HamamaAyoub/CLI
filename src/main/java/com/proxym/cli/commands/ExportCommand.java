@@ -20,7 +20,7 @@ public class ExportCommand implements Runnable {
     @CommandLine.Parameters
     private String dataType;
 
-    private ExportService exportService = new ExportServiceImpl(); // todo: inject using framework
+    private ExportService exportService = new ExportServiceImpl(); // todo: dpendency injection to verify using micronaut
 
     public void run() {
         exportService.export(apiEndpoint, dataType);
