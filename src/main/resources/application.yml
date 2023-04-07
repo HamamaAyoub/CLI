@@ -1,3 +1,20 @@
 micronaut:
   application:
     name: cli
+
+datasources:
+  default:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    db-type: mysql
+    dialect: MYSQL
+    url: "jdbc:mysql://localhost:3306/service"
+    username: "root"
+    password: ""
+jpa:
+  default:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        show_sql: true
+jpa.default.properties.hibernate.hbm2ddl.auto: update
