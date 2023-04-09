@@ -3,14 +3,14 @@ import io.micronaut.http.annotation.*;
 
 @Controller("/services")
 public class ServiceController {
-    private final ServiceSrv serviceService;
+    private final ServiceSrv serviceSvr;
 
     public ServiceController(ServiceSrv serviceService) {
-        this.serviceService = serviceService;
+        this.serviceSvr = serviceService;
     }
 
     @Post("/")
     public ServiceObject create(@Body ServiceObject serviceObject) {
-        return serviceService.save(serviceObject);
+        return serviceSvr.save(serviceObject);
     }
 }

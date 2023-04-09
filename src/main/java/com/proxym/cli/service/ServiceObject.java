@@ -1,9 +1,12 @@
 package com.proxym.cli.service;
 
+import jakarta.inject.Singleton;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
+@Singleton
 public class ServiceObject {
     @Id
     private String name;

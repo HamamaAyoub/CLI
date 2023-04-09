@@ -1,6 +1,7 @@
 package com.proxym.cli.serviceaccess;
 
 import com.proxym.cli.service.ServiceObject;
+import jakarta.inject.Singleton;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +15,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.LocalDateTime;
 import java.util.concurrent.CompletionException;
-
+@Singleton
 public class ExportFormService {
 
     Logger log = LoggerFactory.getLogger(ExportFormService.class);
@@ -22,7 +23,7 @@ public class ExportFormService {
     String apiEndpoint = serviceObject.getUri();
     String dataType = serviceObject.getRequiredData();
 
-    public void execute(ServiceObject serviceObject) {
+    public void export(ServiceObject serviceObject) {
         //create service
         //create logic of service implementation
         //rest (create rest template ) httpClient
