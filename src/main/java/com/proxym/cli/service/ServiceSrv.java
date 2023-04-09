@@ -2,7 +2,7 @@ package com.proxym.cli.service;
 
 import com.proxym.cli.servicedao.ServiceRepository;
 import jakarta.inject.Singleton;
-import org.springframework.stereotype.Service;
+
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -15,8 +15,8 @@ public class ServiceSrv implements IServiceSrv {
     private final ServiceRepository serviceRepository;
 
     @Override
-    public List<ServiceObject> findByName(String name) {
-        return null;
+    public ServiceObject findByName(String name) {
+        return serviceRepository.findByName(name);
     }
 
     @Transactional

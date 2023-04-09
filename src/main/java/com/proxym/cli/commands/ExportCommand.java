@@ -1,14 +1,10 @@
 package com.proxym.cli.commands;
 
-import com.proxym.cli.service.IServiceSrv;
 import com.proxym.cli.service.ServiceObject;
-import com.proxym.cli.service.ServiceSrv;
 import com.proxym.cli.serviceaccess.ExportFormService;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 import picocli.CommandLine;
-
-import java.util.List;
 
 
 @CommandLine.Command(name = "export", description = "exporting file from plateforme",
@@ -37,12 +33,12 @@ public class ExportCommand implements Runnable {
     public ExportCommand(ExportService exportService) {
         this.exportService = exportService;
 
+   @Inject
+   private IServiceSrv serviceSrv;
+    // todo: dpendency injection to verify using micronaut
     }*/
 
 
-@Inject
-private IServiceSrv serviceSrv;
-    // todo: dpendency injection to verify using micronaut
 
     public void run() {
       /* List<ServiceObject> serviceList = serviceSrv.findByName(serviceName);

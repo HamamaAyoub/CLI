@@ -1,6 +1,6 @@
 applicationType: cli
-defaultPackage: com.proxym.cli
+defaultPackage: com.proxym
 testFramework: junit
 sourceLanguage: java
 buildTool: maven
-features: [annotation-api, app-name, jackson-databind, java, junit, logback, maven, picocli, picocli-java-application, picocli-junit, readme, shade, yaml]
+features: [annotation-api, app-name, data, data-jpa, hibernate-jpa, http-client, jackson-databind, jackson-xml, java, jdbc-hikari, junit, logback, lombok, maven, mysql, picocli, picocli-java-application, picocli-junit, readme, serialization-jackson, shade, test-resources, yaml]
