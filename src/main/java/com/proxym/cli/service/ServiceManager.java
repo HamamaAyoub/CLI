@@ -13,9 +13,8 @@ public class ServiceManager implements IServiceManager {
     private  ServiceRepository serviceRepository;
     private  ServiceObject serviceObject;
 
-    public ServiceManager(ServiceRepository serviceRepository,ServiceObject serviceObject) {
+    public ServiceManager(ServiceRepository serviceRepository) {
         this.serviceRepository = serviceRepository;
-        this.serviceObject=serviceObject;
 
 
     }

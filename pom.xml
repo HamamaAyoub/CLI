@@ -42,9 +42,7 @@
       <scope>compile</scope>
     </dependency>
 
-
-
-    <dependency>
+      <dependency>
       <groupId>info.picocli</groupId>
       <artifactId>picocli</artifactId>
       <scope>compile</scope>
@@ -99,11 +97,7 @@
       <artifactId>jakarta.annotation-api</artifactId>
       <scope>compile</scope>
     </dependency>
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-classic</artifactId>
-      <scope>runtime</scope>
-    </dependency>
+
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
@@ -134,6 +128,15 @@
           <artifactId>commons-io</artifactId>
           <version>2.6</version>
       </dependency>
+
+      <dependency>
+          <groupId>ch.qos.logback</groupId>
+          <artifactId>logback-classic</artifactId>
+          <version>1.2.6</version>
+      </dependency>
+
+
+
   </dependencies>
 
   <build>

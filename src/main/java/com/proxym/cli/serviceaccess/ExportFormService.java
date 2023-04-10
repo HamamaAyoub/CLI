@@ -2,6 +2,7 @@ package com.proxym.cli.serviceaccess;
 
 import com.proxym.cli.commands.ExportCommand;
 import com.proxym.cli.service.ServiceObject;
+import com.proxym.cli.servicedao.ServiceRepository;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 import org.apache.commons.io.IOUtils;
@@ -20,31 +21,22 @@ import java.util.concurrent.CompletionException;
 @Singleton
 public class ExportFormService {
 
-    private ServiceObject serviceObject;
-    private ExportCommand exportCommand;
 
     @Inject
-    public ExportFormService(ServiceObject serviceObject, ExportCommand exportCommand){
-        this.exportCommand=exportCommand;
-        this.serviceObject=serviceObject;
+    private ServiceRepository repository;
 
-    }
+
 
     Logger log = LoggerFactory.getLogger(ExportFormService.class);
-    String apiEndpoint = serviceObject.getUri();
-    String dataType = serviceObject.getRequiredData();
 
 
-
-
-
-
-
-    public void export(ServiceObject serviceObject) {
+    public void export(ServiceObject targetService) {
         //create service
         //create logic of service implementation
         //rest (create rest template ) httpClient
         //
+        String apiEndpoint = targetService.getUri();
+        String dataType = targetService.getRequiredData();
 
         try {
             HttpClient client = HttpClient.newHttpClient();
@@ -68,7 +60,7 @@ public class ExportFormService {
                         log.error("Failed to export response to disk", e);
                     }
                 }).join();
-            log.debug("Service : " + dataType + " is exported successfully to : " + apiEndpoint);
+            log.warn("Service : " + dataType + " is exported successfully to : " + apiEndpoint);
             //System.out.println(dataType + " exported successfully to : "+apiEndpoint );
         } catch (CompletionException e) {
             if (e.getCause() instanceof ConnectException) {
