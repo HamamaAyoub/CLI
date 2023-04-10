@@ -1,5 +1,6 @@
 package com.proxym.cli.commands;
 
+import com.proxym.cli.service.ServiceManager;
 import com.proxym.cli.service.ServiceObject;
 import com.proxym.cli.serviceaccess.ExportFormService;
 import jakarta.inject.Inject;
@@ -12,47 +13,32 @@ import picocli.CommandLine;
 @Singleton
 public class ExportCommand implements Runnable {
 
+   // @CommandLine.Option(names = {"-s", "--service"})
+    //private String serviceName;
 
-    private final ExportFormService exportFormService;
+    @CommandLine.Parameters
+    private String serviceName;
+
+
+
+    private ExportFormService exportFormService ;
+    //dependency injection
+    private ServiceObject serviceObject;
+    private  ServiceManager serviceManager;
     @Inject
-    public ExportCommand(ExportFormService exportFormService){
-        this.exportFormService= exportFormService;
+    public ExportCommand(ServiceManager serviceManager){
+        this.serviceManager= serviceManager;
 
     }
 
 
 
-    @CommandLine.Option(names = {"-s", "--service"})
-    private String serviceName;
-
-   // @CommandLine.Parameters
-    //private String dataType;
-
-   /* private ExportService exportService;
-
-    public ExportCommand(ExportService exportService) {
-        this.exportService = exportService;
-
-   @Inject
-   private IServiceSrv serviceSrv;
-    // todo: dpendency injection to verify using micronaut
-    }*/
-
-
 
     public void run() {
-      /* List<ServiceObject> serviceList = serviceSrv.findByName(serviceName);
-        ServiceObject serviceObject = (ServiceObject) serviceList.get(0);
-        System.out.println(serviceObject.getName()); */
 
-        ServiceObject serviceObject = new ServiceObject();
-        serviceObject.setName("test");
-        serviceObject.setPlateforme("http://localhost:8080");
-        serviceObject.setRequiredData("employees");
-        serviceObject.setStatus("enabled");
-
+         serviceObject = serviceManager.findByName(serviceName);
+        System.out.println(serviceObject.getName());
         exportFormService.export(serviceObject);
-
 
     }
 }

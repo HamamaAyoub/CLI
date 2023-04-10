@@ -3,9 +3,9 @@ import io.micronaut.http.annotation.*;
 
 @Controller("/services")
 public class ServiceController {
-    private final ServiceSrv serviceSvr;
+    private final ServiceManager serviceSvr;
 
-    public ServiceController(ServiceSrv serviceService) {
+    public ServiceController(ServiceManager serviceService) {
         this.serviceSvr = serviceService;
     }
 

@@ -1,6 +1,8 @@
 package com.proxym.cli.serviceaccess;
 
+import com.proxym.cli.commands.ExportCommand;
 import com.proxym.cli.service.ServiceObject;
+import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
@@ -18,10 +20,25 @@ import java.util.concurrent.CompletionException;
 @Singleton
 public class ExportFormService {
 
-    Logger log = LoggerFactory.getLogger(ExportFormService.class);
     private ServiceObject serviceObject;
+    private ExportCommand exportCommand;
+
+    @Inject
+    public ExportFormService(ServiceObject serviceObject, ExportCommand exportCommand){
+        this.exportCommand=exportCommand;
+        this.serviceObject=serviceObject;
+
+    }
+
+    Logger log = LoggerFactory.getLogger(ExportFormService.class);
     String apiEndpoint = serviceObject.getUri();
     String dataType = serviceObject.getRequiredData();
+
+
+
+
+
+
 
     public void export(ServiceObject serviceObject) {
         //create service

@@ -1,18 +1,25 @@
 package com.proxym.cli.service;
 
 import com.proxym.cli.servicedao.ServiceRepository;
+import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 
 
 import javax.transaction.Transactional;
-import java.util.List;
-@Singleton
-public class ServiceSrv implements IServiceSrv {
 
-    public ServiceSrv(ServiceRepository serviceRepository) {
+@Singleton
+public class ServiceManager implements IServiceManager {
+
+    private  ServiceRepository serviceRepository;
+    private  ServiceObject serviceObject;
+
+    public ServiceManager(ServiceRepository serviceRepository,ServiceObject serviceObject) {
         this.serviceRepository = serviceRepository;
+        this.serviceObject=serviceObject;
+
+
     }
-    private final ServiceRepository serviceRepository;
+
 
     @Override
     public ServiceObject findByName(String name) {

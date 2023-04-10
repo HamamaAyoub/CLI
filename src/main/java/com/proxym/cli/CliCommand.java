@@ -12,10 +12,10 @@ import picocli.CommandLine.Option;
 
 @Command(name = "cli", description = "...",
         mixinStandardHelpOptions = true,subcommands = {ExportCommand.class },version = "1.0")
-public class CliCommand implements Runnable {
 
-@Inject
-private ServiceRepository serviceRepository;
+
+
+public class CliCommand implements Runnable {
 
 
     public static void main(String[] args) throws Exception {
@@ -23,9 +23,6 @@ private ServiceRepository serviceRepository;
     }
 
     public void run() {
-        ServiceObject service = serviceRepository.findByName("test");
-        System.out.println(service.getName());
-        System.out.println(service.getUri());
 
     }
 }
