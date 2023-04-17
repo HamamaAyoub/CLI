@@ -4,10 +4,11 @@ import jakarta.inject.Singleton;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.LinkedHashMap;
 
 @Entity
 @Singleton
-public class ServiceObject {
+public class ServiceObject  {
     @Id
     private String name;
     private String plateforme;
@@ -15,8 +16,16 @@ public class ServiceObject {
     private String uri;
     private String requiredData;
 
-
-
+    @Override
+    public String toString() {
+        return "ServiceObject{" +
+            "name='" + name + '\'' +
+            ", plateforme='" + plateforme + '\'' +
+            ", status='" + status + '\'' +
+            ", uri='" + uri + '\'' +
+            ", requiredData='" + requiredData + '\'' +
+            '}';
+    }
 
     public String getName() {
         return name;
@@ -57,12 +66,6 @@ public class ServiceObject {
     public void setRequiredData(String requiredData) {
         this.requiredData = requiredData;
     }
-
-
-
-
-
-
 
 
 }

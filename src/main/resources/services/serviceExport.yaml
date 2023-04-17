@@ -1,0 +1,9 @@
+
+name: "employeeFromBankerise"
+plateforme: "Bankerise"
+status: "enabled"
+uri: "http://localhost:8080"
+requiredData: "employees"
+paginable: True
+
+

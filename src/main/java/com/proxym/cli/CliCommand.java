@@ -1,7 +1,9 @@
 package com.proxym.cli;
 
 import com.proxym.cli.commands.ExportCommand;
+import com.proxym.cli.commands.LoadServiceCommand;
 import com.proxym.cli.service.ServiceObject;
+import com.proxym.cli.serviceaccess.YamlParser;
 import com.proxym.cli.servicedao.ServiceRepository;
 import io.micronaut.configuration.picocli.PicocliRunner;
 
@@ -10,8 +12,11 @@ import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Command(name = "cli", description = "...",
-        mixinStandardHelpOptions = true,subcommands = {ExportCommand.class },version = "1.0")
+        mixinStandardHelpOptions = true,subcommands = {ExportCommand.class, LoadServiceCommand.class},version = "1.0")
 
 
 
@@ -23,6 +28,8 @@ public class CliCommand implements Runnable {
     }
 
     public void run() {
+
+
 
     }
 }

@@ -1,6 +1,7 @@
 package com.proxym.cli.service;
 
 import com.proxym.cli.servicedao.ServiceRepository;
+import io.micronaut.data.annotation.Id;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 
@@ -28,6 +29,11 @@ public class ServiceManager implements IServiceManager {
     @Transactional
     public ServiceObject save(ServiceObject serviceObject) {
         return serviceRepository.save(serviceObject);
+    }
+
+    @Override
+    public boolean existsByName(String name) {
+        return serviceRepository.existsByName(name);
     }
 
 }
