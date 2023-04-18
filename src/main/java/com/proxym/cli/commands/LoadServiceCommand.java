@@ -31,7 +31,7 @@ public class LoadServiceCommand implements Runnable {
         ServiceObject serviceObject = new ServiceObject();
         File file = new File(filePath);
 
-
+        //cheks if input is file
         if (file.isFile()) {
             serviceObject = YamlParser.getYamlData(filePath);
             if (!serviceManager.existsByName(serviceObject.getName())) {
@@ -41,7 +41,7 @@ public class LoadServiceCommand implements Runnable {
                 System.out.println("Service configuration file " + serviceObject.getName() + " already exists in the database.");
             }
 
-
+        //cheks if input is a directory
         } else if (file.isDirectory()) {
             List<String> files = YamlParser.getFileNames(filePath);
             if (files.isEmpty()) {

@@ -28,7 +28,7 @@ public class YamlParser {
         ServiceObject serviceObject = new ServiceObject();
         serviceObject.setName((String) linkedHashMap.get("name"));
         serviceObject.setPlateforme((String) linkedHashMap.get("plateforme"));
-        serviceObject.setStatus((String) linkedHashMap.get("status"));
+        serviceObject.setStatus((Boolean) linkedHashMap.get("status"));
         serviceObject.setUri((String) linkedHashMap.get("uri"));
         serviceObject.setRequiredData((String) linkedHashMap.get("requiredData"));
         return serviceObject;

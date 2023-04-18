@@ -30,11 +30,15 @@ public class ExportFormService {
 
 
     public void export(ServiceObject targetService, Integer dataPerRequest) {
+
+
         String apiEndpoint = targetService.getUri();
         String dataType = targetService.getRequiredData();
         HttpResponse<String> httpResponse ;
+        Boolean status = targetService.getStatus();
 
 
+        if(status == true){
         try {
 
             HttpClient client = HttpClient.newHttpClient();
@@ -44,7 +48,7 @@ public class ExportFormService {
             if (dataPerRequest != null) {
                 int pageSize = dataPerRequest;
                 int pageNumber = 0;
-                requestBuilder.uri(URI.create(apiEndpoint + "/api/" + dataType + "/" + pageNumber + "/" + pageSize));
+                requestBuilder.uri(URI.create(apiEndpoint + "/api/" + dataType + "?pagenumber=" + pageNumber + "?pagesize=" + pageSize));
             }
 
             HttpRequest request = requestBuilder.build();
@@ -73,6 +77,10 @@ public class ExportFormService {
             log.error("unexpected error during api call", e);
             System.exit(-1);
         }
+    }
+
+    else System.out.println("Service is disabled");
+
     }
 }
 

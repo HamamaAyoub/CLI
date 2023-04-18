@@ -12,20 +12,11 @@ public class ServiceObject  {
     @Id
     private String name;
     private String plateforme;
-    private String status;
+    private Boolean status;
     private String uri;
     private String requiredData;
 
-    @Override
-    public String toString() {
-        return "ServiceObject{" +
-            "name='" + name + '\'' +
-            ", plateforme='" + plateforme + '\'' +
-            ", status='" + status + '\'' +
-            ", uri='" + uri + '\'' +
-            ", requiredData='" + requiredData + '\'' +
-            '}';
-    }
+
 
     public String getName() {
         return name;
@@ -43,11 +34,11 @@ public class ServiceObject  {
         this.plateforme = plateforme;
     }
 
-    public String getStatus() {
+    public Boolean getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
 
@@ -67,5 +58,14 @@ public class ServiceObject  {
         this.requiredData = requiredData;
     }
 
-
+    @Override
+    public String toString() {
+        return "ServiceObject{" +
+            "name='" + name + '\'' +
+            ", plateforme='" + plateforme + '\'' +
+            ", status=" + status +
+            ", uri='" + uri + '\'' +
+            ", requiredData='" + requiredData + '\'' +
+            '}';
+    }
 }

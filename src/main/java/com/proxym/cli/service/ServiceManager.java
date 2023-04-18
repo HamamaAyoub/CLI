@@ -7,6 +7,7 @@ import jakarta.inject.Singleton;
 
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Singleton
 public class ServiceManager implements IServiceManager {
@@ -34,6 +35,11 @@ public class ServiceManager implements IServiceManager {
     @Override
     public boolean existsByName(String name) {
         return serviceRepository.existsByName(name);
+    }
+
+    @Override
+    public List<ServiceObject> findAll() {
+        return serviceRepository.findAll();
     }
 
 }

@@ -1,6 +1,7 @@
 package com.proxym.cli;
 
 import com.proxym.cli.commands.ExportCommand;
+import com.proxym.cli.commands.GetServiceCommand;
 import com.proxym.cli.commands.LoadServiceCommand;
 import com.proxym.cli.service.ServiceObject;
 import com.proxym.cli.serviceaccess.YamlParser;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Command(name = "cli", description = "...",
-        mixinStandardHelpOptions = true,subcommands = {ExportCommand.class, LoadServiceCommand.class},version = "1.0")
+        mixinStandardHelpOptions = true,subcommands = {ExportCommand.class, LoadServiceCommand.class, GetServiceCommand.class},version = "1.0")
 
 
 
