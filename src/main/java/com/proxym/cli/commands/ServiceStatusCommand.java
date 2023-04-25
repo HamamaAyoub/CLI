@@ -7,6 +7,7 @@ import jakarta.inject.Singleton;
 import picocli.CommandLine;
 
 import javax.persistence.PersistenceException;
+import javax.transaction.Transactional;
 
 
 @CommandLine.Command(name = "statusChange", description = "managing service status",
@@ -30,7 +31,7 @@ public class ServiceStatusCommand implements Runnable {
 
 
 
-    @Override
+    @Override @Transactional
     public void run() {
         ServiceObject serviceObject = serviceManager.findByName(serviceName);
         boolean currentStatus = serviceObject.getStatus();
@@ -47,12 +48,8 @@ public class ServiceStatusCommand implements Runnable {
                 System.out.println("Service is already disabled");
             } else {
                 serviceObject.setStatus(false);
-               //try {
-                   serviceManager.save(serviceObject);
 
-               //}catch (PersistenceException e){
-                 //  System.out.println("exeption");
-               //}
+                   serviceManager.save(serviceObject);
                 System.out.println("Service disabled successfully");
             }
         }
