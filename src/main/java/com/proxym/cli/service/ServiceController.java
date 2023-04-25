@@ -11,6 +11,6 @@ public class ServiceController {
 
     @Post("/")
     public ServiceObject create(@Body ServiceObject serviceObject) {
-        return serviceSvr.save(serviceObject);
+         return  serviceObject;
     }
 }

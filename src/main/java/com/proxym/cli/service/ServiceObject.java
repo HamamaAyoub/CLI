@@ -1,5 +1,6 @@
 package com.proxym.cli.service;
 
+import io.micronaut.context.annotation.Primary;
 import jakarta.inject.Singleton;
 
 import javax.persistence.Entity;

@@ -17,8 +17,6 @@ public class ServiceManager implements IServiceManager {
 
     public ServiceManager(ServiceRepository serviceRepository) {
         this.serviceRepository = serviceRepository;
-
-
     }
 
 
@@ -28,8 +26,8 @@ public class ServiceManager implements IServiceManager {
     }
 
     @Transactional
-    public ServiceObject save(ServiceObject serviceObject) {
-        return serviceRepository.save(serviceObject);
+    public void save(ServiceObject serviceObject) {
+        serviceRepository.save(serviceObject);
     }
 
     @Override
